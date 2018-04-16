@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-edd-add-link-to-product-in-cart/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-edd-add-link-to-product-in-cart/
  * Description: Let's you add links back to your product description pages in the checkout cart.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Chris Ferdinandi
  * Author UI: http://gomakethings.com
  * License: GPLv3
@@ -93,3 +93,26 @@
 
 	}
 	add_action( 'save_post', 'gmt_edd_save_product_page_link_metabox', 1, 2 );
+
+
+
+	/**
+	 * Redirect away from the product if a custom sales page for it exists
+	 */
+	function gmt_edd_product_link_redirect() {
+
+		// Don't run on admin or if not a download page
+		if ( is_admin() || get_post_type() !== 'download' ) return;
+
+		// Variables
+		global $post;
+		$link = get_post_meta( $post->ID, 'gmt_edd_product_page_link', true );
+
+		// If no link, bail
+		if ( empty($link) ) return;
+
+		// Otherwise, redirect
+		wp_redirect( $link, 301 );
+
+	}
+	add_action( 'wp', 'gmt_edd_product_link_redirect' );
