@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-edd-add-link-to-product-in-cart/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-edd-add-link-to-product-in-cart/
  * Description: Let's you add links back to your product description pages in the checkout cart.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Chris Ferdinandi
  * Author UI: http://gomakethings.com
  * License: GPLv3
@@ -26,7 +26,7 @@
 		$text = __( 'View', 'gmt_edd' );
 		$text = apply_filters( 'gmt_edd_get_link_to_product_text', $text );
 
-		echo ' <span class="gmt-edd-link-to-product-in-cart">- <a href="' . esc_url_raw( $link ) . '">' . $text . '</a></span>';
+		echo ' <span class="gmt-edd-link-to-product-in-cart">(<a href="' . esc_url_raw( $link ) . '">' . $text . '</a>)</span>';
 	}
 	add_action( 'edd_checkout_cart_item_title_after', 'gmt_edd_add_links_to_cart_items' );
 
