@@ -23,7 +23,7 @@
 		if ( empty( $link ) ) return;
 
 		// Set the display text
-		$text = __( 'View', 'gmt_edd' );
+		$text = __( 'view item', 'gmt_edd' );
 		$text = apply_filters( 'gmt_edd_get_link_to_product_text', $text );
 
 		echo ' <span class="gmt-edd-link-to-product-in-cart">(<a href="' . esc_url_raw( $link ) . '">' . $text . '</a>)</span>';
